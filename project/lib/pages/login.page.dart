@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/pages/register.page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key});
@@ -7,18 +8,13 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'), 
+        title: const Text('Login'),
       ),
       drawer: const Drawer(),
+      backgroundColor: Colors.transparent,
       body: SafeArea(
         child: Stack(
           children: [
-            Center(
-              child: FittedBox(
-                fit: BoxFit.cover,
-                child: Image.asset('assets/images/purple.png'),
-              ),
-            ),
             Container(
               padding: const EdgeInsets.only(
                 top: 60,
@@ -97,8 +93,8 @@ class LoginPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      width: 100,
-                      height: 40,
+                      width: 80,
+                      height: 20,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -122,7 +118,7 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 12,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -138,16 +134,23 @@ class LoginPage extends StatelessWidget {
                       Text(
                         "New here?",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 12,
                           color: Color.fromARGB(214, 0, 0, 0),
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => RegisterPage(),
+                            ),
+                          );
+                        },
                         child: const Text(
                           "Create an account",
                           style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 12,
                           ),
                         ),
                       ),
@@ -155,23 +158,6 @@ class LoginPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 56,
-        width: MediaQuery.of(context).size.width,
-        child: BottomNavigationBar(
-          currentIndex: 0,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'My Account',
             ),
           ],
         ),
