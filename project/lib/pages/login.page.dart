@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.only(
-                top: 60,
+                top: 150,
                 left: 40,
                 right: 40,
               ),
@@ -33,6 +33,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
+                      borderRadius: BorderRadius.circular(5), // BEGIN: BorderRadius.circular
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -64,6 +65,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
+                      borderRadius: BorderRadius.circular(5), // BEGIN: BorderRadius.circular
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -93,8 +95,8 @@ class LoginPage extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: Container(
-                      width: 80,
-                      height: 20,
+                      width: 100,
+                      height: 40,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -118,7 +120,7 @@ class LoginPage extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
-                            fontSize: 12,
+                            fontSize: 20,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -134,7 +136,7 @@ class LoginPage extends StatelessWidget {
                       Text(
                         "New here?",
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 20,
                           color: Color.fromARGB(214, 0, 0, 0),
                         ),
                       ),
@@ -150,7 +152,7 @@ class LoginPage extends StatelessWidget {
                         child: const Text(
                           "Create an account",
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 20,
                           ),
                         ),
                       ),

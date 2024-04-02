@@ -24,7 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
       color: Colors.transparent,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Register'),
+          title: const Text('Create an account'),
         ),
         drawer: const Drawer(),
         backgroundColor: Colors.transparent,
@@ -53,6 +53,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
@@ -83,6 +84,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
@@ -112,6 +114,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
@@ -142,6 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
@@ -171,6 +175,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: const EdgeInsets.all(10.0),
                             decoration: BoxDecoration(
                               color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.grey.withOpacity(0.5),
@@ -191,17 +196,20 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontWeight: FontWeight.w400,
                                   fontSize: 20,
                                 ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    _showPassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
+                                suffixIcon: Container(
+                                  width: 48,
+                                  child: IconButton(
+                                    icon: Icon(
+                                      _showPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        _showPassword = !_showPassword;
+                                      });
+                                    },
                                   ),
-                                  onPressed: () {
-                                    setState(() {
-                                      _showPassword = !_showPassword;
-                                    });
-                                  },
                                 ),
                               ),
                               style: const TextStyle(fontSize: 20),
@@ -209,30 +217,35 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Row(
-                            children: [
-                              Text('Gênero:'),
-                              Checkbox(
-                                value: _isMaleChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    _isMaleChecked = value!;
-                                  });
-                                },
-                                shape: CircleBorder(),
-                              ),
-                              Text('Masculino'),
-                              Checkbox(
-                                value: _isFemaleChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    _isFemaleChecked = value!;
-                                  });
-                                },
-                                shape: CircleBorder(),
-                              ),
-                              Text('Feminino'),
-                            ],
+                          Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Gênero:'),
+                                SizedBox(width: 20),
+                                Checkbox(
+                                  value: _isMaleChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      _isMaleChecked = value!;
+                                    });
+                                  },
+                                  shape: CircleBorder(),
+                                ),
+                                Text('Masculino'),
+                                SizedBox(width: 20),
+                                Checkbox(
+                                  value: _isFemaleChecked,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      _isFemaleChecked = value!;
+                                    });
+                                  },
+                                  shape: CircleBorder(),
+                                ),
+                                Text('Feminino'),
+                              ],
+                            ),
                           ),
                           const SizedBox(height: 20),
                           SwitchListTile(
@@ -283,7 +296,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.white,
-                                    fontSize: 12,
+                                    fontSize: 20,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
