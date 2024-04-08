@@ -3,28 +3,56 @@ import 'package:project/pages/login.page.dart';
 import 'package:project/pages/register.page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MainPage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        bannerTheme: MaterialBannerThemeData(backgroundColor: Colors.pink[100]),
+      home: Scaffold(
+        bottomNavigationBar: SizedBox(
+          height: 72,
+          width: MediaQuery.of(context).size.width,
+          child: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.business),
+                label: 'My Account',
+              ),
+            ],
+          ),
+        ),
+        body: IndexedStack(
+          index: _currentIndex,
+          children: <Widget>[
+            HomePage(),
+            AboutPage(),
+          ],
+        ),
       ),
-      home: HomePage(),
     );
   }
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -50,27 +78,16 @@ class _HomePageState extends State<HomePage> {
           _pages[_currentIndex],
         ],
       ),
-      bottomNavigationBar: SizedBox(
-        height: 72,
-        width: MediaQuery.of(context).size.width,
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'My Account',
-            ),
-          ],
-        ),
+    );
+  }
+}
+
+class AboutPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Center(
+        child: Text('About Page'),
       ),
     );
   }
