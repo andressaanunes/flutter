@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project/pages/primeiraTela.page.dart';
 import 'package:project/pages/register.page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -6,6 +7,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String email = "";
+    String password = "";
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
@@ -33,7 +37,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5), // BEGIN: BorderRadius.circular
+                      borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -55,6 +59,9 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       style: TextStyle(fontSize: 20),
+                      onChanged: (value) {
+                        email = value;
+                      },
                     ),
                   ),
                   const SizedBox(
@@ -65,7 +72,7 @@ class LoginPage extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(5), // BEGIN: BorderRadius.circular
+                      borderRadius: BorderRadius.circular(5),
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
@@ -87,6 +94,9 @@ class LoginPage extends StatelessWidget {
                           fontSize: 20,
                         ),
                       ),
+                      onChanged: (value) {
+                        password = value;
+                      },
                     ),
                   ),
                   SizedBox(
@@ -114,7 +124,35 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (email == "eu@gmail.com" && password == "1234") {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => PrimeiraTela()),
+                            );
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Dados inválidos"),
+                                  content: const Text(
+                                      "Usuário e/ou senha incorreto(a)"),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, '/segunda_tela');
+                                      },
+                                      child: const Text("OK"),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
                         child: const Text(
                           "Enter",
                           style: TextStyle(

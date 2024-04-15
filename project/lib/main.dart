@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:project/pages/login.page.dart';
+import 'package:project/pages/primeiraTela.page.dart';
 import 'package:project/pages/register.page.dart';
+import 'package:project/pages/segundaTela.page.dart';
 
 void main() {
-  runApp(MainPage());
+  runApp(MaterialApp(
+    initialRoute: '/',
+    routes: {
+      '/': (context) => MainPage(),
+      '/segunda_tela': (context) =>
+          SegundaTela(ModalRoute.of(context)?.settings.arguments as String),
+    },
+  ));
 }
 
 class MainPage extends StatefulWidget {
